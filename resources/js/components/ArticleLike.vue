@@ -4,7 +4,8 @@
         type="button"
         class="btn m-0 p-1 shadow-none"
         >
-        <i class="fas fa-heart mr-1"
+        <i class='fas fa-heart mr-1'
+          :class="{'red-text':this.isLikedBy}"
         />
         </button>
         10
@@ -12,7 +13,17 @@
 </template>
 
 <script>
-export default {
-    
-}
+  export default {
+    props: {
+      initialIsLikedBy: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    data() {
+      return {
+        isLikedBy: this.initialIsLikedBy,
+      }
+    },
+  }
 </script>
