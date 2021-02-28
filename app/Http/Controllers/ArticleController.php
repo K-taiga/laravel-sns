@@ -6,6 +6,13 @@ use App\Article;
 use App\Http\Requests\ArticleRequest;
 
 class ArticleController extends Controller {
+    public function __construct()
+    {
+        // リソースコントローラはaruthorizeResourceのmethodでpolicyとcontrollerをマッピングできる
+        // ArticleControllerでArticlePolicyを使う
+        $this->authorizeResource('App\Article','article');
+    }
+
     public function index() {
         $articles = Article::all()->sortByDesc('created_at');
         return view('articles.index', compact('articles'));
