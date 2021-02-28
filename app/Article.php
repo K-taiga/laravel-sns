@@ -33,4 +33,10 @@ class Article extends Model
          ?(bool)$this->likes->where('id', $user->id)->count()
          :false;
     }
+
+    public function getCountLikesAttribute(): int
+    {
+        // likesリレーション経由でUserモデルにアクセス
+        return $this->likes->count();
+    }
 }
