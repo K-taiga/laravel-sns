@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Http\Requests\ArticleRequest;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 class ArticleController extends Controller {
     public function __construct()
     {
@@ -71,4 +72,5 @@ class ArticleController extends Controller {
             'countLikes' => $article->count_likes,
         ];
     }
+    
 }
