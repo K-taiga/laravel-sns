@@ -26,30 +26,23 @@ export default {
       initialTags: {
         type: Array,
         default:[],
+      },
+      autocompleteItems: {
+        type: Array,
+        default: [],
       }
     },
     data() {
       return {
         tag: '',
         tags: this.initialTags,
-        autocompleteItems: [{
-            text: 'Spain',
-        }, {
-            text: 'France',
-        }, {
-            text: 'USA',
-        }, {
-            text: 'Germany',
-        }, {
-            text: 'China',
-        }],
-    };
+    }
   },
   computed: {
-      filterdItems() {
-          return this.autocompleteItems.filter(i => {
-              return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1;
-          });
+      filteredItems() {
+        return this.autocompleteItems.filter(i => {
+          return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1;
+        });
       },
       tagsJson() {
         return JSON.stringify(this.tags)
